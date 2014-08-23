@@ -37,7 +37,7 @@ export LD_LIBRARY_PATH=/path/to/lib/
 ## Initiating Connection
 
 ```{python}
-mport pandas as pd
+import pandas as pd
 import sys
 sys.path.append('install/lib/python2.7/site-packages/')
 import _activetick as at
@@ -63,6 +63,9 @@ print("global increment: %d, loop count: %d" %(a,loopcount))
 ```
 
 ## Retrieving Tick Data
+
+Continuing from code above, notice that your callback has to be first "set".
+The underlying C python library will invoke your callback on every 100k rows retrieved.
 
 ```{python}
 class mytick(object):
