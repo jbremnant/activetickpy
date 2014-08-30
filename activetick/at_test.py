@@ -69,7 +69,7 @@ def run(apikey,userid,passwd):
   # accumulated pandas dataframe
   print o.data
   # o.to_store('/tmp/test.h5')
-  o.to_csv('/tmp/test.h5')
+  o.to_csv('/tmp/')
   print ("stored data to: /tmp/test.h5")
   return True
 
