@@ -16,16 +16,10 @@ using namespace std;
 
 Requestor::Requestor(const Session& session) :
   ActiveTickServerRequestor(session.getSessionHandle()),
-  m_batch_size(100000),
+  m_batch_size(1000000),
   m_tot_requests(0)
 {
   m_tick_cb = NULL;
-}
-
-Requestor::Requestor(const Session& session, int batch_size_) :
-  Requestor::Requestor(session)
-{
-  m_batch_size = batch_size_;
 }
 
 Requestor::~Requestor(void)

@@ -51,20 +51,25 @@ def run(apikey,userid,passwd):
       for i in self.data.keys():
         store.put(i, self.data[i], format='table')
       store.close()
-  
+    def to_csv(self, fdir):
+        for i in self.data.keys():
+            csvfile = "%s/%s.csv" % (fdir, i)
+            print "writing to %s" % csvfile
+            self.data[i].to_csv(csvfile)
   
   o = mytick()
   
   at.set_tickhist_callback(o.cb)
   at.make_tick_request("RHT", "20130522", "20130522")
-  at.make_tick_request("BAC", "20130522", "20130522")
+  # at.make_tick_request("BAC", "20130522", "20130522")
   
   while at.num_pending_requests() > 0:
     pass
   
   # accumulated pandas dataframe
   print o.data
-  o.to_store('/tmp/test.h5')
+  # o.to_store('/tmp/test.h5')
+  o.to_csv('/tmp/test.h5')
   print ("stored data to: /tmp/test.h5")
   return True
 

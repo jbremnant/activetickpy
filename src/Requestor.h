@@ -4,6 +4,7 @@
 #include <vector>
 #include <ActiveTickServerRequestor.h>
 
+
 class Requestor : public ActiveTickServerRequestor
 {
 public:
@@ -49,6 +50,7 @@ public:
   uint64_t MakeTickRequest(const std::string& symbol, const std::string& sdate, const std::string& edate); 
 
   int NumPendingRequests() { return m_requests.size(); }
+  void setBatchSize(int batch_size) { m_batch_size = batch_size; }
 
 
 private:
@@ -74,3 +76,4 @@ private:
 
 	virtual void		OnATRequestTimeout(uint64_t origRequest);
 };
+

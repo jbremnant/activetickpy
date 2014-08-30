@@ -326,7 +326,8 @@ init_activetick(void) // has to be named init<module>
     psession = &session; // set the pointer
     session.registerLoginCallback(login_callback_wrapper);
 
-    prequestor = new Requestor(session, 100000);
+    prequestor = new Requestor(session);
+    prequestor->setBatchSize(100000);
     prequestor->SetTickHistCB(tickhist_callback_wrapper);
 
     PyObject *m;
