@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 // Global variables
-static Session *psession = NULL; // global pointer to session
+static Session   *psession = NULL; // global pointer to session
 static Requestor *prequestor = NULL; // global pointer to session
 
 static PyObject *ATPyError;
@@ -131,7 +131,6 @@ static void login_callback_wrapper(ATLoginResponseType status, std::string msg)
 
   arglist = Py_BuildValue("(is)", (int) status, msg.c_str());
   result = PyObject_CallObject(_py_login_callback, arglist);
-  Py_DECREF(list);
   Py_DECREF(arglist);
 
   // Release the thread. No Python API allowed beyond this point.
@@ -241,6 +240,7 @@ static void tickhist_callback_wrapper(ATTickHistoryResponseType status,
   PyObject *arglist = Py_BuildValue("(sO)", symbol.c_str(), list);
   PyObject *result = PyObject_CallObject(_py_tickhist_callback, arglist);
   Py_DECREF(arglist);
+  Py_DECREF(list);
 
   PyGILState_Release(gstate); 
 }
