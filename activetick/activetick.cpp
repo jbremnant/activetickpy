@@ -131,6 +131,7 @@ static void login_callback_wrapper(ATLoginResponseType status, std::string msg)
 
   arglist = Py_BuildValue("(is)", (int) status, msg.c_str());
   result = PyObject_CallObject(_py_login_callback, arglist);
+  Py_DECREF(list);
   Py_DECREF(arglist);
 
   // Release the thread. No Python API allowed beyond this point.
