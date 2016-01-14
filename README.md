@@ -12,18 +12,21 @@ Only tested on linux.
 
 ## To Install and Test
 
-First install these packages. They are not absolutely required, but helpful 
+First install these packages. They are optional, but helpful 
 if you want to manipulate data downloaded off of active tick.
 
+[Required]
+
+* none
+
+[Optional]
+
 * hdf5 development libraries
-
-Python libraries:
-
-* numpy
-* pandas
-* numexpr
-* pytables
-* h5py
+* python pkg: numpy
+* python pkg: pandas
+* python pkg: numexpr
+* python pkg: pytables
+* python pkg: h5py
 
 ```
 $ git clone git@github.com:jbremnant/activetickpy.git
